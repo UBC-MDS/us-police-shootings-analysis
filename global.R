@@ -1,6 +1,6 @@
 library(tidyverse)
 
-shootings <- read_csv("../data/database.csv")
+shootings <- read_csv("data/database.csv")
 
 shootings <- shootings %>% 
   mutate(armed = if_else(!(armed %in% c('gun', 'knife')), "Other", armed))
