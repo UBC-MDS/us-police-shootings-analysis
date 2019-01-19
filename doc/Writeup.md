@@ -59,7 +59,7 @@ Tasks that arise from the above rationale:
 
 ## Visual Encoding
 
-We chose to use the `viridis` color palette for the chloropleth map because it is more effective for humans to detect difference in colors with this palette. It uses a better combination of Hue, Luminance and Saturation and hence, is more effective. This would also help colorblind people to easily read the difference in colors on the map. The colors are linked to the proportion of shootings in particular states as compared to the whole country which is gauged using the legend colourbar. We also combined all the categories in the relevant categorical variables with very less counts into a single category called `Other`.
+We chose to use the `viridis` color palette for the chloropleth map because it is more effective for humans to detect difference in colors with this palette. It uses a better combination of Hue, Luminance and Saturation and hence, is more effective. This would also help colorblind people to easily read the difference in colors on the map. The colors are linked to the proportion of shootings in particular states as compared to the whole country which is gauged using the legend colourbar. There is a `hover` effect on the map which lets the user know the name of the state and the percentage of the shootings with the selected configuration in that state. We think this is a useful feature and it let's user clearly differentiate between the states if the colorbar fails to help in close cases. We also combined all the categories in the relevant categorical variables with very less counts into a single category called `Other`.
 
 ## Vision Change
 
