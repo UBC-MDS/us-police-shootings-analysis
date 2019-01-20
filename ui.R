@@ -1,3 +1,4 @@
+# loading required libraries
 library(plotly)
 
 # Choices for drop-downs
@@ -27,8 +28,10 @@ vars_fleeing <- c(
 )
 
 
-navbarPage("Shootings", id="nav",
+# main page display options
+navbarPage("Police Shootings (US)", id="nav",
            
+           # main map on the app display
            tabPanel("Interactive map",
                     div(class="outer",
                         
@@ -37,12 +40,12 @@ navbarPage("Shootings", id="nav",
                           includeCSS("styles.css")
                         ),
                         
-                        plotlyOutput("plot"),
+                        plotlyOutput("plot", height = "600px"),
                         verbatimTextOutput("click"),
                         
                         # Shiny versions prior to 0.11 should use class = "modal" instead.
                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                      draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
+                                      draggable = TRUE, top = 100, left = "auto", right = 200, bottom = "auto",
                                       width = 330, height = "auto",
                                       
                                       h2("Explorer"),
@@ -60,6 +63,7 @@ navbarPage("Shootings", id="nav",
                     )
            ),
            
+           # configuring the ui for the data explorer tab
            tabPanel("Data explorer",
                     fluidPage(
                       titlePanel("Basic DataTable"),
