@@ -3,17 +3,20 @@ library(plotly)
 
 # Choices for drop-downs
 vars_armed <- c(
+  "All" = "all",
   "Gun" = "gun",
   "Knife" = "knife",
   "Other" = "Other"
 )
 
 vars_gender <- c(
+  "All" = "all",
   "Male" = "M",
   "Female" = "F"
 )
 
 vars_race <- c(
+  "All" = "all",
   "White" = "W",
   "Black" = "B",
   "Hispanic" = "H",
@@ -21,6 +24,7 @@ vars_race <- c(
 )
 
 vars_fleeing <- c(
+  "All" = "all",
   "Not Fleeing" = "Not fleeing",
   "Car" = "Car",
   "Foot" = "Foot",
@@ -53,7 +57,7 @@ navbarPage("Police Shootings (US)", id="nav",
                                                   min = 1, max = 100,
                                                   value = c(1, 80)),
                                       
-                                      selectInput("race", "Race", vars_race),
+                                      selectInput("race", "Race", vars_race, selected = "all"),
                                       selectInput("gender", "Gender", vars_gender),
                                       selectInput("armed", "Armed", vars_armed),
                                       selectInput("fleeing", "Fleeing", vars_fleeing),

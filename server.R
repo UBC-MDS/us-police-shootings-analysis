@@ -11,10 +11,32 @@ function(input, output, session) {
     # creating a reactive data object to be used in the plot
     dat <- reactive({
         
-        # filtering data bsed on user selected settings
+        # filtering based on user selected input
+        if(input$race=="all")
+          filter_race=unique(shootings$race)
+        else
+          filter_race = input$race
+        
+        if(input$armed=="all")
+          filter_armed=unique(shootings$armed)
+        else
+          filter_armed = input$armed
+        
+        if(input$gender=="all")
+          filter_gender=unique(shootings$gender)
+        else
+          filter_gender = input$gender
+        
+        if(input$fleeing=="all")
+          filter_flee=unique(shootings$flee)
+        else
+          filter_flee = input$fleeing
+        
+        
+        # applying the filters on data based on user selected settings
         dat <- shootings %>% 
-                filter(race == input$race, armed == input$armed, 
-                       gender == input$gender, flee == input$fleeing,
+                filter(race %in% filter_race, armed %in% filter_armed,
+                       gender %in% filter_gender, flee %in% filter_flee,
                        age >=input$age_range[1], age <= input$age_range[2]) %>% 
                 group_by(state) %>% 
                 summarise(cases = n()) %>% 
