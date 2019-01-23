@@ -45,7 +45,7 @@ navbarPage("Police Shootings (US)", id="nav",
                         
                         # Shiny versions prior to 0.11 should use class = "modal" instead.
                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                      draggable = TRUE, top = 100, left = "auto", right = 200, bottom = "auto",
+                                      draggable = TRUE, top = 100, left = 20, right = "auto", bottom = "auto",
                                       width = 330, height = "auto",
                                       
                                       h2("Explorer"),
@@ -57,9 +57,12 @@ navbarPage("Police Shootings (US)", id="nav",
                                       selectInput("gender", "Gender", vars_gender),
                                       selectInput("armed", "Armed", vars_armed),
                                       selectInput("fleeing", "Fleeing", vars_fleeing),
-                                      plotOutput("histAge", height = 200)
+                                      plotOutput("histAge", height = 200),
+                                      tableOutput("top5")
                                       #plotOutput("scatterCollegeIncome", height = 250)
                         )
+                        
+                        
                     )
            ),
            

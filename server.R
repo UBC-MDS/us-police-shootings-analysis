@@ -17,8 +17,8 @@ function(input, output, session) {
                        gender == input$gender, flee == input$fleeing,
                        age >=input$age_range[1], age <= input$age_range[2]) %>% 
                 group_by(state) %>% 
-                summarise(n = n()) %>% 
-                mutate(prop = n * 100 / sum(n))
+                summarise(cases = n()) %>% 
+                mutate(percentage = round(cases * 100 / sum(cases), 3))
     })
     
   
@@ -31,10 +31,10 @@ function(input, output, session) {
       lakecolor = toRGB('white')
     )
     # plot the map with the reactive dataset created based on user settings
-    plot_ly(z = dat()$prop, text = dat()$state, locations = dat()$state,
+    plot_ly(z = dat()$percentage, text = dat()$state, locations = dat()$state,
             type = 'choropleth', locationmode = 'USA-states', colorscale='Viridis') %>%
-            colorbar(title = '% of Total Shootings') %>% 
-            layout(geo = g, title = 'Poolice Shootings in the United States (2015 - Present)')
+            colorbar(title = '% of Shootings based \n on selected settings') %>% 
+            layout(geo = g, title = 'Analyze Civilian Deaths from Police Shootings across the US (2015 - Present)')
   })
   
   # add some more interactivity in the future based on clicks
@@ -58,10 +58,16 @@ function(input, output, session) {
            breaks = ageBreaks,
            main = "Age of the person",
            xlab = "Age",
+           ylab = "Death Count",
            xlim = lims(),
-           col = '#00DD00',
+           col = "red",
            border = 'white')
   })
+    
+  
+    # displaying top 5 states with the selected settings
+    output$top5 <- renderTable({dat() %>% 
+                              top_n(5)})
   
   ## Data Explorer ###########################################
     
