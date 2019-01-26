@@ -89,7 +89,8 @@ function(input, output, session) {
   
     # displaying top 5 states with the selected settings
     output$top5 <- renderTable({dat() %>% 
-                              top_n(5)})
+                              top_n(5) %>% 
+                              arrange(desc(cases))})
   
   ## Data Explorer ###########################################
     
