@@ -69,6 +69,24 @@ Our vision for the app has certainly changed from what we thought in the initial
 
 Our goal for the next milestone would be to update the app based on the feedback. We are also planning to have more side plots for the relevant variables. A small portion at the bottom part of the app page could be used to display a small table with a summary of the selected variable configuration. The data could also be displayed city-wise instead of state-wise for an in-depth and more complicated analysis. Radio buttons could be added for other variables such as `mental_illness` which would further help users filter relevant cases based on that variable. Currently, we only chose a few variables that we think were important in the analysis.
 
+## Feedback from Peer Review
+
+After receiving the feedbacks from Vincenzo and two other groups during the lab, we have discussed and summirized their reviews, and we also reflected on the usability of our app. During the milstone 2, we figured that the users can easily figure things out by looking at the data exploror tab, however, when the users use it, their first reaction were not to find the infomation at there, rather, they wanted more information at the first tap. We also expected the users had a general idea of the data set in the app, and why they wanted to use this app to analyze the dataset. However, during the peer review, some did mention that the title could be confusing if they know noting about the dataset. This is because the reviewers didn't have that much general idea about the dataset, however, in reality, users who want to use this app should have more general idea about the dataset than the random reviewers during the lab.
+
+We get different feedbacks from different groups. In general, it is easy to use the app. The selctions and the infomation provided are clear. People find it clear to preceive infomation. Some feedbacks have mentioned that the title and the histogram were not confusing. Some also suggested to add more option in the drop-down menu. There is no particular feedback occured several times from different groups. At the end, we decided to implement the following suggestions:
+
+- Correct the title to clearly state the purpose of the app for the users.
+
+- Change to the lower precision for the numbers displayed on hovering, because they sre not required to have high precision.
+
+- For avoiding confusion, it would be more helpful to change the legend on the color intensity plot to say "frequency out of variables currently selected'
+
+- It is great that the total frequency plotted on the map is updated each time new filters are selected, but it would be more helpful to be clear about this to avoid confusion that it is percentage out of total shootings. Perhaps add a description or change the legend on the color intensity plot to say "frequency out of variables currently selected'
+
+- Add a bar chart that ranks the top most dangerous states to see a clearer comparison.
+
+- Add an “all” option in every drop-down menu.
+
 ## Limitations
 
 Just like any app in the world, this app also has some limitations.
