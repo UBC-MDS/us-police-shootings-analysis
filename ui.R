@@ -49,7 +49,7 @@ navbarPage("Police Shootings (US)", id="nav",
                         
                         # Shiny versions prior to 0.11 should use class = "modal" instead.
                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                      draggable = TRUE, top = 100, left = 20, right = "auto", bottom = "auto",
+                                      draggable = TRUE, top = 30, left = 25, right = "auto", bottom = "auto",
                                       width = 330, height = "auto",
                                       
                                       h2("Explorer"),
