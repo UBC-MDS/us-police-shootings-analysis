@@ -6,6 +6,11 @@ A Shiny app for the analysis of unjust police shootings in the United States.
 - [Aditya Sharma](https://github.com/adityashrm21)
 - [Yuwei Liu](https://github.com/liuyuwei169)
 
+### Links to feedback given to peers
+
+- [Feedback to Yenan and Krish on US_Crime_Trend](https://github.com/UBC-MDS/US_Crime_Trend/issues/9)
+- [Feedback to Heather, Mike and Mani on Mental_Health_in_TechJobs](https://github.com/UBC-MDS/Mental_Health_in_TechJobs/issues/5)
+
 ## Overview
 
 Since the killing of Michael Brown in Ferguson, Missouri happened in 2014 and its consequential protest movement culminating in Black Lives Matter, there has been an increased focus on tracking police shootings. If we could understand the behavior and circumstances which lead to these civilian deaths, it may be possible to reduce the frequency of unjust police shooting. In order to address this challenge, we propose to build a data visualization app using Shiny that allows researchers and concerned people to visually explore a dataset of police shootings leading to civilian deaths since 2015. The application will show how the factors involved in these shootings are distributed geographically over the United States, as well as how the individual factors are distributed by allowing users to explore different aspects of this data by filtering and re-ordering on different variables in order to compare factors that contribute to civilian deaths. This would provide with useful insights to the user which could then be used to further explore the causes and create strategies and rules to prevent unjust police shooting cases in the future.
