@@ -52,32 +52,39 @@ function(input, output, session) {
         lakecolor = toRGB('white')
       )
       
-      output$hover <- renderTable({
-          d <- event_data("plotly_hover", source = "choropleth")
-          if (length(d))
-          {
-            curr_state <- map$state[map$index == (d[['pointNumber']] + 1)]
-            shootings %>% 
-              filter(state == curr_state) %>% 
-              group_by(race) %>% 
-              mutate(cases = n()) %>% 
-              select(race, cases) %>% 
-              arrange(race) %>% 
-              distinct()
-          }
-          else
-          {
-            text <- NULL
-          }
-      })
-      
-      
       # plot the map with the reactive dataset created based on user settings
       plot_ly(z = dat()$percentage, text = dat()$state, locations = dat()$state, source = "choropleth",
               type = 'choropleth', locationmode = 'USA-states', colorscale='Viridis') %>%
               colorbar(title = '% of Shootings based \n on selected settings') %>% 
               layout(geo = g, title = 'Analyze Civilian Deaths from Police Shootings across the US (2015 - Present)')
     })
+    
+    # adding interactivity on hover
+    output$hover <- renderPlotly({
+        d <- event_data("plotly_hover", source = "choropleth")
+        if (length(d))
+        {
+          # plotting current state's race distribution
+          curr_state <- map$state[map$index == (d[['pointNumber']] + 1)]
+          curr_data <- shootings %>% 
+              filter(state == curr_state) %>% 
+              group_by(race) %>% 
+              mutate(cases = n()) %>% 
+              select(race, cases) %>% 
+              arrange(race)
+          curr_data %>% 
+              ggplot(aes(x = race)) + 
+              geom_bar(fill = "#E89B56") + 
+              theme_bw() +
+              labs(x = "Race", y = "Count") +
+              ggtitle(unique(curr_state))
+        }
+        else
+        {
+          plotly_empty()
+        }
+    })
+    
   
     # add some more interactivity based on clicks
     output$linechart <- renderPlotly({
@@ -89,7 +96,7 @@ function(input, output, session) {
           # plotting line chart of deaths over time for selected state
           d %>% 
               ggplot(aes(x = ym, y = count, group=1)) +
-              geom_line() +
+              geom_line(color = "#E89B56") +
               labs(x = "Time", y = "Civilian Deaths") +
               ggtitle(unique(d$state)) +
               theme_bw() +
@@ -117,20 +124,19 @@ function(input, output, session) {
              xlab = "Age",
              ylab = "Death Count",
              xlim = lims(),
-             col = "red",
+             col = "#E89B56",
              border = 'white')
       })
       
+      # bar plot with overall race distribution for comparison ot states
       output$bar <- renderPlotly({
-          x <- list(
-            title = "Race"
-          )
-          y <- list(
-            title = "Death Count"
-          )
-          plot_ly(x = bar_dat$race, y = bar_dat$cases, type = "bar", 
-                  name = "Race (deaths) distribution") %>% 
-            layout(xaxis = x, yaxis = y, title = "Deaths (by race) distribution")
+
+        bar_dat %>% 
+            ggplot(aes(x = race)) + 
+            geom_bar(fill = "#E89B56") + 
+            theme_bw() +
+            labs(x = "Race", y = "Count") +
+            ggtitle("Overall distribution")
       })
     
       # displaying top 5 states with the selected settings

@@ -35,5 +35,4 @@ country_gp <- shootings %>%
 bar_dat <- shootings %>% 
     group_by(race) %>% 
     mutate(cases = n()) %>% 
-    select(race, cases) %>% 
-    distinct()
+    select(race, cases)

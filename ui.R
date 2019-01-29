@@ -43,32 +43,36 @@ navbarPage("Police Shootings (US)", id="nav",
                           # Include our custom CSS
                           includeCSS("styles.css")
                         ),
+                        # all the plots and the map are defined and positioned here
                         mainPanel(
+                          div(plotlyOutput("plot", height = "450px"), align = "center"),
                           fluidRow(
-                            div(plotlyOutput("plot", height = "450px"), align = "center"),
+                            tags$blockquote("Hover over the states to see race distribution, 
+                                            click for a time-series death count."),
                             column(4, plotlyOutput("bar", height = "250px")),
-                            column(7, div(plotlyOutput("linechart", height = "300px", width = "400px"), align = "center")),
-                            column(1, tableOutput("hover"))
+                            column(4, plotlyOutput("hover", height = "250px")),
+                            column(4, plotlyOutput("linechart", height = "250px", width = "400px"))
                           )
                           
                         ),
                         # Shiny versions prior to 0.11 should use class = "modal" instead.
                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-                                      draggable = TRUE, top = 30, left = 25, right = "auto", bottom = "auto",
+                                      draggable = TRUE, top = 30, left = "auto", right = 25, bottom = "auto",
                                       width = 330, height = "auto",
                                       
                                       h2("Explorer"),
-                                      sliderInput("age_range", "Age:",
+                                      tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, 
+                                                      .js-irs-0 .irs-bar {background: #E89B56}")),
+                                      sliderInput("age_range", "Select Age Range:",
                                                   min = 1, max = 100,
-                                                  value = c(1, 80)),
-                                      
+                                                  value = c(10, 80)),
+                                    
                                       selectInput("race", "Race", vars_race, selected = "all"),
                                       selectInput("gender", "Gender", vars_gender),
                                       selectInput("armed", "Armed", vars_armed),
                                       selectInput("fleeing", "Fleeing", vars_fleeing),
                                       plotOutput("histAge", height = 200),
                                       tableOutput("top5")
-                                      #plotOutput("scatterCollegeIncome", height = 250)
                         )
                         
                     )
