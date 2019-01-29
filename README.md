@@ -1,6 +1,8 @@
 # US Police Shootings Analysis
 A Shiny app for the analysis of unjust police shootings in the United States.
 
+![Figure 1: Click](imgs/click.png)
+
 ## Contributors
 
 - [Aditya Sharma](https://github.com/adityashrm21)
