@@ -45,13 +45,11 @@ navbarPage("Police Shootings (US)", id="nav",
                         ),
                         # all the plots and the map are defined and positioned here
                         mainPanel(
-                          div(plotlyOutput("plot", height = "450px"), align = "center"),
+                          div(plotlyOutput("plot", height = "400px"), align = "center"),
                           fluidRow(
-                            tags$blockquote("Hover over the states to see race distribution, 
-                                            click for a time-series death count."),
-                            column(4, plotlyOutput("bar", height = "250px")),
-                            column(4, plotlyOutput("hover", height = "250px")),
-                            column(4, plotlyOutput("linechart", height = "250px", width = "400px"))
+                            column(4, plotlyOutput("bar", height = "200px")),
+                            column(4, plotlyOutput("hover", height = "200px")),
+                            column(4, plotlyOutput("linechart", height = "200px", width = "400px"))
                           )
                           
                         ),
