@@ -43,10 +43,15 @@ navbarPage("Police Shootings (US)", id="nav",
                           # Include our custom CSS
                           includeCSS("styles.css")
                         ),
-                        
-                        plotlyOutput("plot", height = "600px"),
-                        verbatimTextOutput("click"),
-                        
+                        mainPanel(
+                          fluidRow(
+                            div(plotlyOutput("plot", height = "450px"), align = "center"),
+                            column(4, plotlyOutput("bar", height = "250px")),
+                            column(7, div(plotlyOutput("linechart", height = "300px", width = "400px"), align = "center")),
+                            column(1, tableOutput("hover"))
+                          )
+                          
+                        ),
                         # Shiny versions prior to 0.11 should use class = "modal" instead.
                         absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                                       draggable = TRUE, top = 30, left = 25, right = "auto", bottom = "auto",
@@ -65,7 +70,6 @@ navbarPage("Police Shootings (US)", id="nav",
                                       tableOutput("top5")
                                       #plotOutput("scatterCollegeIncome", height = 250)
                         )
-                        
                         
                     )
            ),
