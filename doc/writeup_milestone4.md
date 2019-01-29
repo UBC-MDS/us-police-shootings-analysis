@@ -1,6 +1,6 @@
 # Last Improvement
 
-At the present stage, we are quite happy with the app and what goal we started with to accomplish with it. It came out really well and received positive feedback from peers as well as the instructors but as we know, nothing is perfect and there is always room for more! Users would be more interested in using the app if they feel connected to the task and the cause and this is exactly what led us to the final improvement in our app.
+At the present stage, we are quite happy with the app and its ability to accomplish the goal we started with. It came out really well and received positive feedback from peers as well as the instructors but as we know, nothing is perfect and there is always room for improvement! Users would be more interested in using the app if they feel connected to the task and the cause and this is exactly what led us to the final improvement in our app.
 
 In this writeup, we discuss the changes and last-minute decisions that we took in order to carry out the final improvements and finishing touches to our app.
 
@@ -31,4 +31,4 @@ If we were to design and build such an app from scratch again, we would first tr
 
 Some of the greatest challenges we faced were a blend of coding challenges as well as design thinking issues. Implementing some features like the hover and the click interactivity required us to figure out how `Plotly` is encoding the states from the choropleth map and how it is linking them to the `event_data` object output on the server side. It took a bit of thinking and solving this puzzle before we ultimately found out that it adjusts the names alphabetically and we will have to create a map of the state names with an index in this order from our dataset to manipulate the incoming hover/click object output to use. Another major challenge that we faced was to remove any pre-imposed conditional filters on the map by default. Implementing this feature took a lot of time and effort from our side as adding conditional filters using `dplyr's` `filter` is not straightforward and simply using an `if_else()` clause inside the filter does not help. We were able to implement this feature using filters outside `filter()` and then using them in `filter()` by checking the presence of the corresponding variable in the selected/required categories.
 
-Overall, the challenges and the whole project helped us learn a lot and like any other learning process, have helped us imbibe confidence in building shiny applications in R.
+Overall, the project and the challenges helped us learn a lot and like any other learning process, have helped us imbibe confidence in building shiny applications in R.
